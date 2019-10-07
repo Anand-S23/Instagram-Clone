@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block title %}{{ user.username }} Followers{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        {% for follower in user.followers.all %}
+            <a href="{% url 'accounts:detail' follower.username %}">{{ follower }}</a>
+        {% endfor %}
+    </div>
+
+{% endblock content %}

@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block title %}{{ object.username }}{% endblock %}
+
+{% block content %}
+ 
+
+<header>
+
+	<div class="container">
+
+		<div class="profile">
+
+			<div class="profile-image">
+
+				<img src="{{ object.picture.url }}">
+
+			</div>
+
+			<div class="profile-user-settings">
+
+				<h1 class="profile-user-name">{{ object.username }}</h1>
+
+                {% if request.user.username == object.username %}
+                <a href="{% url 'accounts:update' %}"><button class="btn profile-edit-btn">Edit Profile</button></a>
+                {% else %}
+                    {% if request.user in object.followers.all %}
+                        <a href="{% url 'accounts:follow' object.username %}"><button class="btn profile-edit-btn">Following</a>
+                    {% else %}
+                        <a href="{% url 'accounts:follow' object.username %}"><button class="btn profile-follow-btn">Follow</button></button></a>
+                    {% endif %}
+                {% endif %}
+
+
+			</div>
+
+			<div class="profile-stats">
+
+				<ul>
+                    <li><span class="profile-stat-count">164</span> posts</li>
+
+                    {% if object.followers %}
+                        <li><span class="profile-stat-count">{{ object.followers.count }}</span> <a href="{% url 'accounts:followers' object.username %}"> followers</a></li>
+                    {% else %}
+                        <li><span class="profile-stat-count">0</span> followers</li>
+                    {% endif %}
+
+                    {% if object.following %}
+                        <li><span class="profile-stat-count">{{ object.following.count }}</span> <a href="{% url 'accounts:following' object.username %}"> following</a></li>
+                    {% else %}
+                        <li><span class="profile-stat-count">0</span> following</li>
+                    {% endif %}
+				</ul>
+
+			</div>
+
+			<div class="profile-bio">
+
+                {% if object.bio %}
+                    <p>{{ object.bio }}</p>
+                {% endif %}
+
+			</div>
+
+		</div>
+		<!-- End of profile section -->
+
+	</div>
+	<!-- End of container -->
+
+</header>
+
+{% endblock content %}

@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block title %}{{ object.username }}{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="profile">
+            <div class="profile-image">
+                <img src="{{ object.picture.url }}" style="height: 250px;">
+            </div>
+
+
+            <div class="profile-user-settings">
+                <h1 class="profile-user-name">
+                    {{ object.username }}
+                </h1>  
+
+                {% if request.user.username == object.username %}
+                <!-- Data tiles -->
+                <a class="btn profile-edit-btn" href="{% url 'accounts:update' %}">{% trans 'Update Profile' %}</a>
+                {% endif %}
+            </div>
+
+            {% if object.followers %}
+                <p> <a href="{% url 'accounts:followers' object.username %}">Followers:</a> {{ object.followers.count }}</p>
+            {% endif %}
+
+            {% if object.following %}
+                <p><a href="{% url 'accounts:following' object.username %}">Following:</a> {{ object.following.count }}</p>
+            {% endif %}
+
+            {% if request.user.username != object.username %}
+                {% if request.user in object.followers.all %}
+                    <a href="{% url 'accounts:follow' object.username %}"><button>Following</button></a>
+                {% else %}
+                    <a href="{% url 'accounts:follow' object.username %}"><button>Follow</button></a>
+                {% endif %}
+            {% endif %}
+
+            {% if object.bio %}
+                <div id="objective"><p>{{ object.bio }}</p></div>
+            {% endif %}
+
+        </div>
+    </div>
+
+{% endblock content %}
