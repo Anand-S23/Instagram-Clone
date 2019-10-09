@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block title %} New Post {% endblock %}
+
+{% block content %}
+<img src="{{ post.post_pic.url }}" style="height: 250px;">
+
+{% if comments %}
+    {% for comment in comments %}
+        <h3>{{ comment }}</h3>
+    {% endfor %}
+{% endif %}
+
+<form method="post" class="post-form" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="save btn btn-default">Save</button>
+</form>
+
+{% endblock %}
