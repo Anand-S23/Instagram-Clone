@@ -68,14 +68,13 @@ class MyUser(AbstractBaseUser):
 	REQUIRED_FIELDS = ['email', 'name']
 
 	def __str__(self):
-		return self.username
+		return str(self.username)
 	
 	def get_absolute_url(self):
 		return reverse('accounts:detail', kwargs={'username': self.username})
 
 	def get_short_name(self):
-		return self.username
-
+		return str(self.username)
 
 	def has_perm(self, perm, obj=None):
 		return True
