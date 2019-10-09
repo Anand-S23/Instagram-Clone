@@ -5,6 +5,7 @@ Completed Features:
 - User authentication system
 - User follow system
 - User can update thier information
+- Post system (mostly backend)
 
 In-development Features:
 - Front-end post system bug fix 
