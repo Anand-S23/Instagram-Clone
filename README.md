@@ -7,6 +7,6 @@ Completed Features:
 - User can update thier information
 
 In-development Features:
-- Post system (Like, Comment and Post - models made but no forms or views)
+- Front-end post system bug fix 
 - Activity (See what others are doing) 
 - Home (list of posts from users you follow)
