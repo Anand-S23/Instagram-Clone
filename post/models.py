@@ -17,7 +17,8 @@ class Post(models.Model):
         return str(self.pk)
 
 class Comment(models.Model):
-    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    #post = models.ForeignKey(Post, on_delete=models.CASCADE) 
+    post = models.ForeignKey(Post, default=1, on_delete=models.CASCADE) # default=1 to fix null contrain error
     comment_user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=1)
     comment = models.TextField(blank=False, null=False, max_length=1000)
     comment_id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True, null=True, blank=True)
