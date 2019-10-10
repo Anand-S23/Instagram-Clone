@@ -7,7 +7,8 @@ Completed Features:
 - User can update thier information
 - Post system (mostly backend)
 
-In-development Features:
+In-development To Do List:
 - Front-end post system bug fix 
 - Activity (See what others are doing) 
 - Home (list of posts from users you follow)
+- UI/UX Desgin
