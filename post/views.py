@@ -2,8 +2,10 @@ from django.shortcuts import render
 from .models import Post, Comment
 from .forms import PostForm, CommentForm
 from django.shortcuts import get_object_or_404
+form django.contrib.auth.decorators import login_required
 
 # Create your views here.
+@login_required
 def view_post(request, pk):
     post = get_object_or_404(Post, pk=pk)
     comments = Comment.objects.all().filter(post=post)
@@ -27,6 +29,7 @@ def view_post(request, pk):
                   template_name='post/post.html',
                   context=context)
 
+@login_required
 def new_post(request):
     if request.method == 'POST':
         form = PostForm(request.POST)
@@ -41,3 +44,6 @@ def new_post(request):
                     context={
                         'form':form
                     })
+
+def post_like_system(request):
+    pass
