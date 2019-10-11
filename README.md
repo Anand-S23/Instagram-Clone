@@ -5,10 +5,11 @@ Completed Features:
 - User authentication system
 - User follow system
 - User can update thier information
-- Post system (mostly backend)
+- Post system - Post, Comment (mostly backend)
 
 In-development To Do List:
 - Front-end post system bug fix  
+- Like system for posts
 - Home (list of posts from users you follow)
 
 Later Features:
