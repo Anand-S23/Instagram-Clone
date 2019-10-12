@@ -9,7 +9,7 @@ import uuid
 class Post(models.Model):
     post_pic = models.ImageField(blank=False, null=False, upload_to='posts')
     post_id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True, null=True, blank=True)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     likes = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True, null=True, related_name='user_liked')
     post_date = models.TimeField(default=timezone.now())
 
@@ -17,9 +17,8 @@ class Post(models.Model):
         return str(self.pk)
 
 class Comment(models.Model):
-    #post = models.ForeignKey(Post, on_delete=models.CASCADE) 
-    post = models.ForeignKey(Post, default=1, on_delete=models.CASCADE) # default=1 to fix null contrain error
-    comment_user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=1)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE) 
+    comment_user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     comment = models.TextField(blank=False, null=False, max_length=1000)
     comment_id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True, null=True, blank=True)
     comment_date = models.TimeField(default=timezone.now())

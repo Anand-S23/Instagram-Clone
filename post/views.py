@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import Post, Comment
 from .forms import PostForm, CommentForm
 from django.shortcuts import get_object_or_404
-form django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 @login_required
@@ -13,10 +13,10 @@ def view_post(request, pk):
     if request.method == 'POST':
         form = CommentForm(request.POST)
         if form.is_valid():
-            form.save(commit=False)
-            form.comment_user = request.user
-            form.post = post
-            form.save()
+            instance = form.save(commit=False)
+            instance.comment_user = request.user
+            instance.post = post
+            instance.save()
     form = CommentForm()
 
     context={
@@ -32,11 +32,11 @@ def view_post(request, pk):
 @login_required
 def new_post(request):
     if request.method == 'POST':
-        form = PostForm(request.POST)
+        form = PostForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save(commit=False)
-            form.user = request.user
-            form.save()
+            instance = form.save(commit=False)
+            instance.user = request.user
+            instance.save()
     form = PostForm()
 
     return render(request=request,
