@@ -63,6 +63,12 @@
 
 			</div>
 
+            {% if posts %}
+				{% for post in posts %}
+                <a href="{% url 'post:view_post' post.pk %}"><img src="{{ post.post_pic.url }}" style="height: 100px;"></a>
+				{% endfor %}
+			{% endif %}
+
 		</div>
 		<!-- End of profile section -->
 

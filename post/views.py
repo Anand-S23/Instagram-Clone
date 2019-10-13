@@ -5,6 +5,7 @@ from django.shortcuts import get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from django.views.generic import RedirectView
+from django.http import HttpResponseRedirect
 
 # Create your views here.
 @login_required
@@ -39,6 +40,7 @@ def new_post(request):
             instance = form.save(commit=False)
             instance.user = request.user
             instance.save()
+            return HttpResponseRedirect(f'/user/{request.user}')
     form = PostForm()
 
     return render(request=request,
