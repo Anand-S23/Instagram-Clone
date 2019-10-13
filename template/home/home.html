@@ -2,4 +2,14 @@
 {% load static i18n %}
 {% block content%}
 
+    {% if posts %}
+        {% for post in posts %}
+            {% if post.user in request.user.following.all %}
+                <img src="{{ post.post_pic.url }}" style="height: 250px;">
+                <p>{{ post.post_date }}</p>
+            {% endif %}
+        {% endfor %}
+        <h3>Follow more users to see their posts, you can find users in explore!</h3>
+    {% endif %}
+
 {% endblock %}

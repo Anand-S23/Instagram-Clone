@@ -5,8 +5,9 @@ from post.models import Post
 # Create your views here.
 @login_required
 def HomeView(request):
-    #posts = Post.objects.filter(request.user__following) to desplay the post of users in following 
+    posts = Post.objects.all() #to display the post of users in following 
     
     return render(request=request,
-                  template_name='home/home.html',)
+                  template_name='home/home.html',
+                  context={'posts':posts})
 
