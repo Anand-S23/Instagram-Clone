@@ -7,7 +7,7 @@
 
 <h3>Upload a picture to share with your friends</h3>
 
-<form method="post" class="post-form" enctype="multipart/form-data" action="{% url 'new_post' %}">
+<form method="post" class="post-form" enctype="multipart/form-data" action="{% url 'post:new_post' %}">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit" class="save btn btn-default">Save</button>
