@@ -63,6 +63,12 @@
 
 			</div>
 
+			{% if posts %}
+				{% for post in posts %}
+					{{ post.post_pic }}
+				{% endfor %}
+			{% endif %}
+
 		</div>
 		<!-- End of profile section -->
 

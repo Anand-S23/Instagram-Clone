@@ -8,6 +8,7 @@ from django.views.generic import DetailView, ListView, RedirectView, UpdateView,
 from django.contrib import messages  
 from django.contrib.auth.decorators import login_required
 from .models import MyUser
+from post.models import Post
 
 # Create your views here.
 
@@ -64,6 +65,12 @@ class UserDetailView(LoginRequiredMixin, DetailView):
     # These next two lines tell the view to index lookups by username
     slug_field = 'username'
     slug_url_kwarg = 'username' 
+
+    def get_context_data(self, **kwargs):
+        context = super(UserDetailView, self).get_context_data(**kwargs)
+        context['posts'] = Post.objects.filter(user=self.object)
+        return context
+
 
  
 # Redirects to user detail 
