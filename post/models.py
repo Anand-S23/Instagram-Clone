@@ -10,7 +10,7 @@ class Post(models.Model):
     post_pic = models.ImageField(blank=False, null=False, upload_to='posts')
     post_id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True, null=True, blank=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    likes = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True, null=True, related_name='user_liked')
+    likes = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True, related_name='user_liked')
     post_date = models.TimeField(default=timezone.now())
 
     def __str__(self):
