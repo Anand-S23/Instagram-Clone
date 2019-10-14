@@ -8,10 +8,9 @@ Completed Features:
 - Post system - Post, Comment, Like
 
 In-development To Do List: 
-- Like system final touches 
 - Home (list of posts from users you follow)
+- Activity (See what others are doing)
 
 Later Features:
 - UI/UX Desgin
-- Activity (See what others are doing)
 - Flutter or React Native front end with Django Rest API
