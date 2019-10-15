@@ -10,7 +10,7 @@ Completed Features:
 In-development To Do List: 
 - Home (list of posts from users you follow)
 - Activity (See what others are doing)
-
-Later Features:
 - UI/UX Desgin
+
+Future Features:
 - Flutter or React Native front end with Django Rest API
