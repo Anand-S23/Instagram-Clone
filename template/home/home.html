@@ -8,9 +8,9 @@
                 <img src="{{ post.post_pic.url }}" style="height: 250px;">
                 <p>
                     {% if request.user in post.likes.all %}
-                        <a href="{% url 'post:like' post.pk %}"><button>Unlike</button></a>
+                        <a href="{% url 'post:out_like' post.pk %}"><button>Unlike</button></a>
                     {% else %}
-                        <a href="{% url 'post:like' post.pk %}"><button>Like</button></a>
+                        <a href="{% url 'post:out_like' post.pk %}"><button>Like</button></a>
                     {% endif %}
                     {{ post.post_date|timesince }}
                 </p>
