@@ -2,6 +2,8 @@
 {% load static i18n %}
 {% block content%}
 
+    {% set any_post = false %}
+
     {% if posts %}
         {% for post in posts %}
             {% if post.user in request.user.following.all %}
@@ -13,9 +15,12 @@
                         <a href="{% url 'post:out_like' post.pk %}"><button>Like</button></a>
                     {% endif %}
                     {{ post.post_date|timesince }}
+                    {% set any_post true %}
                 </p>
             {% endif %}
         {% endfor %}
+    {% endif %}
+    {% if {{ any_post}} == false %}
         <h3>Follow more users to see their posts, you can find users in explore!</h3>
     {% endif %}
 
