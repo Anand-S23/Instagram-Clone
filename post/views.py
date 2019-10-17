@@ -60,3 +60,15 @@ class LikeSys(RedirectView):
             post.likes.add(user)
         
         return reverse('post:view_post', kwargs={'pk':pk})
+    
+class OutLikeSys(RedirectView):
+    def get_redirect_url(self, *args, **kwargs):
+        pk = self.kwargs.get('pk')
+        post = get_object_or_404(Post, pk=pk)
+        user = self.request.user
+        if user in post.likes.all():
+            post.likes.remove(user)
+        else:
+            post.likes.add(user)
+        
+        return reverse('home:home', kwargs={'pk':pk})
