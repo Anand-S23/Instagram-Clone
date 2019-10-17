@@ -6,7 +6,14 @@
         {% for post in posts %}
             {% if post.user in request.user.following.all %}
                 <img src="{{ post.post_pic.url }}" style="height: 250px;">
-                <p>{{ post.post_date|timesince }}</p>
+                <p>
+                    {% if request.user in post.likes.all %}
+                        <a href="{% url 'post:like' post.pk %}"><button>Unlike</button></a>
+                    {% else %}
+                        <a href="{% url 'post:like' post.pk %}"><button>Like</button></a>
+                    {% endif %}
+                    {{ post.post_date|timesince }}
+                </p>
             {% endif %}
         {% endfor %}
         <h3>Follow more users to see their posts, you can find users in explore!</h3>
