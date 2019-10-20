@@ -7,9 +7,9 @@ Completed Features:
 - User can update thier information
 - Post system - Post, Comment, Like
 - Home (list of posts from users you follow)
+- Activity (Notified when someone follows you or likes your post.)
 
 In-development To Do List: 
-- Activity (See what others are doing)
 - UI/UX Desgin
 
 Future Features:
