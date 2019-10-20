@@ -13,6 +13,7 @@ class Post(models.Model):
     likes = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True, related_name='user_liked')
     post_date = models.DateTimeField(default=timezone.now())
 
+
     def __str__(self):
         return str(self.pk)
 
@@ -22,6 +23,7 @@ class Comment(models.Model):
     comment = models.TextField(blank=False, null=False, max_length=1000)
     comment_id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True, null=True, blank=True)
     comment_date = models.DateTimeField(default=timezone.now())
+
 
     def __str__(self):
         return self.comment
