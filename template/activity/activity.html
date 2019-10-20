@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block title %} Post {% endblock %}
+
+{% block content %}
+
+{% if activites %}
+    {% for activity in activites %}
+        <p>{{ activity }}</p>
+    {% endfor %}
+{% endif %}
+
+{% endblock %}

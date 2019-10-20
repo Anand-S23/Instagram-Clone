@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from django.views.generic import RedirectView
 from django.http import HttpResponseRedirect
-from activity.models import LikeAct
+from user_activity.models import Act
 
 # Create your views here.
 @login_required
@@ -55,7 +55,7 @@ class LikeSys(RedirectView):
         pk = self.kwargs.get('pk')
         post = get_object_or_404(Post, pk=pk)
         user = self.request.user
-        act = LikeAct(to_user=post.user, from_user=user)
+        act = Act(to_user=post.user, from_user=user, act='liked')
         if user in post.likes.all():
             post.likes.remove(user)
         else:
@@ -73,6 +73,6 @@ class OutLikeSys(RedirectView):
             post.likes.remove(user)
         else:
             post.likes.add(user)
-            act = LikeAct(to_user=post.user, from_user=user, post=post)
+            act = Act(to_user=post.user, from_user=user, act='liked')
         
         return reverse('home:home')
