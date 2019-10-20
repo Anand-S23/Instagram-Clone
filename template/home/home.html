@@ -4,8 +4,21 @@
 
     {% if posts %}
         {% for post in posts %}
-            <img src="{{ post.post_pic.url }}" style="height: 250px;">
-            <p>{{ post.post_date|timesince }}</p>
+            <a href="{% url 'accounts:detail' post.user %}">
+                {{ post.user }}
+            </a>
+            <a href="{% url 'post:view_post' post.pk %}">
+                <img src="{{ post.post_pic.url }}" style="height: 250px;">
+            </a>
+            <p>
+                {{ post.post_date|timesince }}
+                {{ post.likes.count }}
+                {% if request.user in post.likes.all %}
+                    <a href="{% url 'post:out_like' post.pk %}"><button>Unlike</button></a>
+                {% else %}
+                    <a href="{% url 'post:out_like' post.pk %}"><button>Like</button></a>
+                {% endif %}
+            </p>
         {% endfor %}
     {% else %}
         <h3>Follow more users to see their posts, you can find users in explore!</h3>
