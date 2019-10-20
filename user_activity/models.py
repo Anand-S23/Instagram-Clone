@@ -12,6 +12,6 @@ class Act(models.Model):
 
     def __str__(self):
         if self.act == 'followed':
-            return f'{self.from_user} {self.act} {self.to_user}.'
+            return f'{self.from_user} {self.act} you.'
         else:
             return f'{self.from_user} {self.act} your post.'
