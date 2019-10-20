@@ -71,4 +71,4 @@ class OutLikeSys(RedirectView):
         else:
             post.likes.add(user)
         
-        return reverse('home:home', kwargs={'pk':pk})
+        return reverse('home:home')

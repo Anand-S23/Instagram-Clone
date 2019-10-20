@@ -6,7 +6,7 @@ from accounts.models import MyUser
 # Create your views here.
 @login_required
 def HomeView(request):
-    posts = Post.objects.filter(user__in=request.user.following.all()) 
+    posts = Post.objects.filter(user__in=request.user.following.all()).order_by('-post_date')
     
     return render(request=request,
                   template_name='home/home.html',
