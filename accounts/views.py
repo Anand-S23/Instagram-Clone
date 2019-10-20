@@ -9,7 +9,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import MyUser
 from post.models import Post
-from activity.models import FollowAct
+from user_activity.models import Act
 
 # Create your views here.
 
@@ -113,7 +113,7 @@ class UserFollowSystem(LoginRequiredMixin, RedirectView):
         username = self.kwargs.get('username')
         obj = get_object_or_404(MyUser, username=username)
         user = self.request.user 
-        act = FollowAct(to_user=obj, from_user=user)
+        act = Act(to_user=obj, from_user=user, act='followed')
         if user in obj.followers.all():
             obj.followers.remove(user)
             user.following.remove(obj)
