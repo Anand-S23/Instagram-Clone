@@ -73,10 +73,17 @@ a:hover
     color: darkgray;
 }
 
-.container {
+.ocontainer {
     max-width: 93.5rem;
     margin: 0 auto;
     padding: 0 2rem;
+}
+
+.icontainer {
+    max-width: 93.5rem;
+    margin: 0 auto;
+    padding: 0 2rem;
+    padding-top: 4rem;
 }
 
 .btn {
