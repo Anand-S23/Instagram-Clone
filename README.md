@@ -13,4 +13,4 @@ In-development To Do List:
 - UI/UX Desgin
 
 Future Features:
-- Flutter or React Native front end with Django Rest API
+- Flutter front end with Django Rest API (both web and app)
