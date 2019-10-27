@@ -1,0 +1,12 @@
+.post-card {
+    padding-left: 13%;
+    padding-right: 13%;
+}
+
+.post-head img{
+    display: block;
+    margin:0!important;
+    padding:0!important;
+    border:0!important;
+    margin-right: 0px;
+}

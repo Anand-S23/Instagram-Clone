@@ -1,31 +1,39 @@
 {% extends "base.html" %}
 {% load static i18n %}
 
+{% block head %}<link rel="stylesheet" href="{% static 'css/home/home.css' %}">{% endblock %}
 {% block nav %} <a class="navbar-link insta"><span>Instaclone</span></a> {% endblock %}
 
 {% block content%}
+    <div class="post-card">
+        {% if posts %}
+            {% for post in posts %}
+                <div class="post-head">
 
-    {% if posts %}
-        {% for post in posts %}
-            <a href="{% url 'accounts:detail' post.user %}">
-                {{ post.user }}
-            </a>
-            <a href="{% url 'post:view_post' post.pk %}">
-                <img src="{{ post.post_pic.url }}" style="height: 250px;">
-            </a>
-            <p>
-                {{ post.post_date|timesince }}
-                {{ post.likes.count }}
-                {% if request.user in post.likes.all %}
-                    <a href="{% url 'post:out_like' post.pk %}"><button>Unlike</button></a>
-                {% else %}
-                    <a href="{% url 'post:out_like' post.pk %}"><button>Like</button></a>
-                {% endif %}
-            </p>
-        {% endfor %}
-    {% else %}
-        <h3>Follow more users to see their posts, you can find users in explore!</h3>
-    {% endif %}
-
+                    <a href="{% url 'accounts:detail' post.user %}">
+                        <span>
+                            <img src="{{ post.user.picture.url }}" style="width: 30px; height: 30;"> {{ post.user }}
+                        </span>
+                    </a>
+                </div>
+                <a href="{% url 'post:view_post' post.pk %}">
+                    <img src="{{ post.post_pic.url }}" style="width: 658px; height: 658;">
+                </a>
+                <div class="post-foot">
+                    <p>
+                        {{ post.post_date|timesince }}
+                        {{ post.likes.count }}
+                        {% if request.user in post.likes.all %}
+                            <a href="{% url 'post:out_like' post.pk %}"><button>Unlike</button></a>
+                        {% else %}
+                            <a href="{% url 'post:out_like' post.pk %}"><button>Like</button></a>
+                        {% endif %}
+                    </p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <h3>Follow more users to see their posts, you can find users in explore!</h3>
+        {% endif %}
+    </div>
 
 {% endblock %}
