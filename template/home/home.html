@@ -9,10 +9,10 @@
         {% if posts %}
             {% for post in posts %}
                 <div class="post-head">
-
                     <a href="{% url 'accounts:detail' post.user %}">
-                        <span>
-                            <img src="{{ post.user.picture.url }}" style="width: 30px; height: 30;"> {{ post.user }}
+                        <img align="left" src="{{ post.user.picture.url }}" style="width: 30px; height: 30;"> 
+                        <span class="username">
+                            {{ post.user }}
                         </span>
                     </a>
                 </div>
@@ -21,13 +21,18 @@
                 </a>
                 <div class="post-foot">
                     <p>
-                        {{ post.post_date|timesince }}
-                        {{ post.likes.count }}
-                        {% if request.user in post.likes.all %}
-                            <a href="{% url 'post:out_like' post.pk %}"><button>Unlike</button></a>
-                        {% else %}
-                            <a href="{% url 'post:out_like' post.pk %}"><button>Like</button></a>
-                        {% endif %}
+                        <span class="foot"> 
+                            {{ post.likes.count }}
+                            {% if request.user in post.likes.all %}
+                                <a href="{% url 'post:out_like' post.pk %}"><i class="fa fa-heart" style="color:#ff0000" ></i></a>
+                            {% else %}
+                                <a href="{% url 'post:out_like' post.pk %}"><i class="fa fa-heart-o"></i></a>
+                            {% endif %}
+                            <a href="{% url 'post:view_post' post.pk %}"><i class="fa fa-comment-o"></i></a>  
+                        </span>           
+                        <span class="post-time">
+                            {{ post.post_date|timesince }}
+                        </span>  
                     </p>
                 </div>
             {% endfor %}

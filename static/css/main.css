@@ -38,7 +38,7 @@ Flexbox and floats are used as a fallback so that browsers which don't support g
 
 */
 
-/* Base Styles */
+/* Base Styles
 
 :root {
     font-size: 10px;
@@ -128,7 +128,7 @@ a:hover
     clip: rect(1px, 1px, 1px, 1px);
 }
 
-/* Profile Section */
+/* Profile Section /
 
 .profile {
     padding: 5rem 0;
@@ -236,7 +236,7 @@ a:hover
     font-weight: 600;
 }
 
-/* Gallery Section */
+/* Gallery Section /
 
 .gallery {
     display: flex;
@@ -298,7 +298,7 @@ a:hover
     object-fit: cover;
 }
 
-/* Loader */
+/* Loader /
 
 .loader {
     width: 5rem;
@@ -310,7 +310,7 @@ a:hover
     animation: loader 500ms linear infinite;
 }
 
-/* Media Query */
+/* Media Query /
 
 @media screen and (max-width: 40rem) {
     .profile {
@@ -392,7 +392,7 @@ a:hover
     }
 }
 
-/* Spinner Animation */
+/* Spinner Animation /
 
 @keyframes loader {
     to {
@@ -406,7 +406,7 @@ The following code will only run if your browser supports CSS grid.
 
 Remove or comment-out the code block below to see how the browser will fall-back to flexbox & floated styling. 
 
-*/
+/
 
 @supports (display: grid) {
     .profile {
@@ -468,3 +468,125 @@ Remove or comment-out the code block below to see how the browser will fall-back
         }
     }
 }
+*/
+
+/* Base */
+:root {
+    font-size: 10px;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Open Sans", Arial, sans-serif;
+    min-height: 100vh;
+    background-color: #fafafa;
+    color: #262626;
+    padding-bottom: 3rem;
+}
+
+img {
+    display: block;
+}
+
+.top {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.bot {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.bot-nav {
+    width: 20%;
+    text-align: center;
+}
+
+.insta {
+    font-family: 'Lobster Two', cursive;;
+    text-align: center;
+    width: 100%;
+    font-size: 3.5rem;
+}
+
+a, a:visited, a:focus, a:link
+{ 
+    text-decoration: none; 
+    color: black
+}
+a:hover
+{
+    text-decoration: none;
+    color: darkgray;
+}
+
+.ocontainer {
+    max-width: 93.5rem;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.icontainer {
+    max-width: 93.5rem;
+    margin: 0 auto;
+    padding: 0 2rem;
+    padding-top: 7rem;
+}
+
+.btn {
+    display: inline-block;
+    font: inherit;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn:focus {
+    outline: 0.5rem auto #4d90fe;
+}
+
+/* Home */
+.post-card {
+    padding-left: 13%;
+    padding-right: 13%;
+}
+
+.post-head img {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.post-foot {
+    margin-top: 5px;
+    margin-bottom: 50px;
+}
+
+.post-foot p {
+    font-size: 2rem;
+}
+
+.username {
+    font-size: 2.15rem;
+}
+
+.foot {
+    justify-content: right;
+}
+
+.post-time {
+    font-size: 1.75rem;
+}
+
+/* Explore */
+
+/* Add */
+
+/* Like */
+
+/* Profile */
