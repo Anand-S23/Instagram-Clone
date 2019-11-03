@@ -1,29 +1,59 @@
 {% extends "base.html" %}
 {% load static i18n %}
 
+{% block head %}<link rel="stylesheet" href="{% static 'css/home/post.css' %}">{% endblock %}
+{% block nav %} <a class="navbar-link insta"><span>Instaclone</span></a> {% endblock %}
+
 {% block title %} New Post {% endblock %}
 
 {% block content %}
-<img src="{{ post.post_pic.url }}" style="height: 250px;">
+    <div class="post-card">
+        <div class="post-head">
+            <a href="{% url 'accounts:detail' post.user %}">
+                <img align="left" src="{{ post.user.picture.url }}" style="width: 30px; height: 30;"> 
+                <span class="username">
+                    {{ post.user }}
+                </span>
+            </a>
+        </div>
 
-{% if request.user in post.likes.all %}
-    <a href="{% url 'post:like' post.pk %}"><button>Unlike</button></a>
-{% else %}
-    <a href="{% url 'post:like' post.pk %}"><button>Like</button></a>
-{% endif %}
+        <img src="{{ post.post_pic.url }}" style="width: 658px; height: 658;">
 
-<h3>{{ post.likes.count }}</h3>
+        <div class="apost-foot">
+            <p>
+                <span class="foot">
+                    {{ post.likes.count }}
+                    {% if request.user in post.likes.all %}
+                        <a href="{% url 'post:like' post.pk %}"><i class="fa fa-heart" style="color:#ff0000" ></i></a>
+                    {% else %}
+                        <a href="{% url 'post:like' post.pk %}"><i class="fa fa-heart-o"></i></a>
+                    {% endif %}
+                </span>
+            </p>
+        </div>
+    </div>
+    
+    <div class="enter-comment">
+        <form method="post" class="post-form" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="save btn btn-primary">Save</button>
+        </form>
+    </div>
 
-{% if comments %}
-    {% for comment in comments %}
-        <h3>{{ comment }}</h3>
-    {% endfor %}
-{% endif %}
+    <div class="comment">
+        {% if comments %}
+            {% for comment in comments %}
+                <p>
+                    <a href="{% url 'accounts:detail' comment.comment_user %}">
+                        <img align="left" src="{{ comment.comment_user.picture.url }}" style="width: 30px; height: 30;">
+                        {{ comment.comment_user}}:
+                    </a> 
+                    {{ comment }}
+                </p>
+            {% endfor %}
+        {% endif %}
+    </div>
 
-<form method="post" class="post-form" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="save btn btn-default">Save</button>
-</form>
 
 {% endblock %}

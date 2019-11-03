@@ -21,6 +21,7 @@ def view_post(request, pk):
             instance.comment_user = request.user
             instance.post = post
             instance.save()
+            return HttpResponseRedirect(request.path_info)
     form = CommentForm()
 
     context={

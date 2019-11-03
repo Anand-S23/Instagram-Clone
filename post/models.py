@@ -20,7 +20,7 @@ class Post(models.Model):
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE) 
     comment_user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    comment = models.TextField(blank=False, null=False, max_length=1000)
+    comment = models.CharField(blank=False, null=False, max_length=1000)
     comment_id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True, null=True, blank=True)
     comment_date = models.DateTimeField(default=timezone.now())
 
