@@ -4,10 +4,6 @@
 
 {% block content %}
 
-  <div class="page-header">
-    <h1>{% trans 'All Users' %}</h1>
-  </div>
-
   <p>{{ user_list }}</p>
   {% for user in myuser_list %}
     {% if request.user.username != user.username %}

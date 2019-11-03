@@ -640,6 +640,10 @@ a:hover
 /* Explore */
 
 /* Add */
+.add-label {
+    text-align: center;
+    font-size: 3rem;
+}
 
 /* Like */
 

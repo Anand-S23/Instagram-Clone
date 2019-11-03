@@ -1,16 +1,22 @@
 {% extends "base.html" %}
 {% load static i18n %}
 
+{% block head %}<link rel="stylesheet" href="{% static 'css/home/post.css' %}">{% endblock %}
+{% block nav %} <a class="navbar-link insta"><span>Instaclone</span></a> {% endblock %}
+
 {% block title %} Post {% endblock %}
 
 {% block content %}
 
-<h3>Upload a picture to share with your friends</h3>
+    <p class="add-label">Upload a picture to share with your friends!</p>
 
-<form method="post" class="post-form" enctype="multipart/form-data" action="{% url 'post:new_post' %}">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="save btn btn-default">Save</button>
-</form>
+    <div class="upload">
+        <form method="post" class="post-form" enctype="multipart/form-data" action="{% url 'post:new_post' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="save btn btn-default">Save</button>
+        </form>
+    </div>
+        
 
 {% endblock %}
