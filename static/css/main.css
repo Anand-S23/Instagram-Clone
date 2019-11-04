@@ -638,6 +638,10 @@ a:hover
 }
 
 /* Explore */
+.e-user {
+    font-size: 2.25rem;
+    margin-bottom: 10px;
+}
 
 /* Add */
 .add-label {
