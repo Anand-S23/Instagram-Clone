@@ -12,9 +12,11 @@
 
     <div class="upload">
         <form method="post" class="post-form" enctype="multipart/form-data" action="{% url 'post:new_post' %}">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="save btn btn-default">Save</button>
+            <div class="upload-button">
+                {% csrf_token %}
+                {{ form.as_p }}
+            </div>
+            <button type="submit" class="save btn btn-primary"><p>Save</p></button>
         </form>
     </div>
         

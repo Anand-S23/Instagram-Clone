@@ -114,6 +114,14 @@ a:hover
 /* Explore */
 
 /* Add */
+.upload {
+    background-color: yellow;
+}
+.post-form  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 /* Like */
 

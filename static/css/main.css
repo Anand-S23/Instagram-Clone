@@ -642,7 +642,36 @@ a:hover
 /* Add */
 .add-label {
     text-align: center;
-    font-size: 3rem;
+    font-size: 3.25rem;
+}
+
+.upload {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.post-form {
+    text-align: center;
+    font-size: 1.75rem;
+    margin-top: 15%;
+}
+
+.post-form button {
+    font-size: 1.75rem;
+}
+
+.upload-button {
+    margin-bottom: 25px;
+}
+
+.upload-button input {
+    width: 300px;
+}
+
+.save {
+    width: 100%;
+    font-size: 1.75rem;
 }
 
 /* Like */
