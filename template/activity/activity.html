@@ -1,13 +1,15 @@
 {% extends "base.html" %}
 {% load static i18n %}
 
-{% block title %} Post {% endblock %}
+{% block title %} Activity {% endblock %}
+{% block head %}<link rel="stylesheet" href="{% static 'css/home/home.css' %}">{% endblock %}
+{% block nav %} <a class="navbar-link insta"><span>Instaclone</span></a> {% endblock %}
 
 {% block content %}
 
 {% if activites %}
     {% for activity in activites %}
-        <p>{{ activity }}</p>
+        <p class="e-activity">{{ activity }}</p>
     {% endfor %}
 {% endif %}
 
