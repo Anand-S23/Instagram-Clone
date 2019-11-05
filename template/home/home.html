@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static i18n %}
+{% load custom_filters %}
 
 {% block head %}<link rel="stylesheet" href="{% static 'css/home/home.css' %}">{% endblock %}
 {% block nav %} <a class="navbar-link insta"><span>Instaclone</span></a> {% endblock %}
@@ -31,7 +32,7 @@
                             <a href="{% url 'post:view_post' post.pk %}"><i class="fa fa-comment-o"></i></a>  
                         </span>           
                         <span class="post-time">
-                            {{ post.post_date|timesince }}
+                            {{ post.post_date|yearssince }}
                         </span>  
                     </p>
                 </div>
