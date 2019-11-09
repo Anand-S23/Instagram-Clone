@@ -3,72 +3,57 @@
 
 {% block title %}{{ object.username }}{% endblock %}
 
+{% block head %}<link rel="stylesheet" href="{% static 'css/home/home.css' %}">{% endblock %}
+{% block nav %} <a class="navbar-link insta"><span>Instaclone</span></a> {% endblock %}
+
 {% block content %}
- 
+    <header>
+            <div class="profile">
+                <div class="profile-image">
+                    <img src="{{ object.picture.url }}">
+                </div>
 
-<header>
-		<div class="profile">
-
-			<div class="profile-image">
-
-				<img src="{{ object.picture.url }}">
-
-			</div>
-
-			<div class="profile-user-settings">
-
-				<h1 class="profile-user-name">{{ object.username }}</h1>
-
-                {% if request.user.username == object.username %}
-                <a href="{% url 'accounts:update' %}"><button class="btn profile-edit-btn">Edit Profile</button></a>
-                {% else %}
-                    {% if request.user in object.followers.all %}
-                        <a href="{% url 'accounts:follow' object.username %}"><button class="btn profile-edit-btn">Following</a>
+                <div class="profile-user-settings">
+                    <h1 class="profile-user-name">{{ object.username }}</h1>
+                    
+                    {% if request.user.username == object.username %}
+                    <a href="{% url 'accounts:update' %}"><button class="btn profile-edit-btn">Edit Profile</button></a>
                     {% else %}
-                        <a href="{% url 'accounts:follow' object.username %}"><button class="btn profile-follow-btn">Follow</button></button></a>
+                        {% if request.user in object.followers.all %}
+                            <a href="{% url 'accounts:follow' object.username %}"><button class="btn profile-edit-btn">Following</a>
+                        {% else %}
+                            <a href="{% url 'accounts:follow' object.username %}"><button class="btn profile-follow-btn">Follow</button></button></a>
+                        {% endif %}
                     {% endif %}
-                {% endif %}
+                </div>
 
-
-			</div>
-
-			<div class="profile-stats">
-
-				<ul>
-                    <li><span class="profile-stat-count">164</span> posts</li>
-
-                    {% if object.followers %}
-                        <li><span class="profile-stat-count">{{ object.followers.count }}</span> <a href="{% url 'accounts:followers' object.username %}"> followers</a></li>
-                    {% else %}
-                        <li><span class="profile-stat-count">0</span> followers</li>
-                    {% endif %}
-
-                    {% if object.following %}
+                <div class="profile-stats">
+                    <ul>
+                        <li><span class="profile-stat-count">{{ posts.count }}</span> posts</li>
+                        <li><span class="profile-stat-count">{{ object.followers.count }}</span> <a href="{% url 'accounts:followers' object.username %}"> followers</a></li>    
                         <li><span class="profile-stat-count">{{ object.following.count }}</span> <a href="{% url 'accounts:following' object.username %}"> following</a></li>
-                    {% else %}
-                        <li><span class="profile-stat-count">0</span> following</li>
+                    </ul>
+                </div>
+
+                <div class="profile-bio">
+                    {% if object.bio %}
+                        <p>{{ object.bio }}</p>
                     {% endif %}
-				</ul>
+                </div>
+            </div>
+    </header>
 
-			</div>
-
-			<div class="profile-bio">
-
-                {% if object.bio %}
-                    <p>{{ object.bio }}</p>
+    <main>
+        <div class="container">
+            <div class="gallery">
+                    {% if posts %}
+                    {% for post in posts %}
+                        <div class="gallery-item" tabindex="0">
+                            <a href="{% url 'post:view_post' post.pk %}"><img src="{{ post.post_pic.url }}" style="height: 200px; width:250px;"></a>
+                        </div>
+                    {% endfor %}
                 {% endif %}
-
-			</div>
-
-            {% if posts %}
-				{% for post in posts %}
-                <a href="{% url 'post:view_post' post.pk %}"><img src="{{ post.post_pic.url }}" style="height: 100px;"></a>
-				{% endfor %}
-			{% endif %}
-
-		</div>
-		<!-- End of profile section -->
-
-</header>
-
+            </div>
+        </div>
+    </main>
 {% endblock content %}
