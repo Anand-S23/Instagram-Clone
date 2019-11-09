@@ -77,3 +77,17 @@ class OutLikeSys(RedirectView):
             act = Act(to_user=post.user, from_user=user, act='liked')
         
         return reverse('home:home')
+
+
+def delete_post(request, pk):
+    #  Deleting the task
+    dp = get_object_or_404(Post, pk=pk)
+
+    if request.method == 'POST':
+        dp.delete()
+        return HttpResponseRedirect(f'/user/{request.user}/')
+
+    
+    # Rendering everything to html (template)
+    return render(request=request,
+                  template_name='post/delete.html')

@@ -15,6 +15,10 @@
                     {{ post.user }}
                 </span>
             </a>
+
+            {% if post.user == request.user %}
+                <a href="{% url 'post:delete_post' post.pk %}"><button>Delete</button></a>
+            {% endif %}
         </div>
 
         <img src="{{ post.post_pic.url }}" style="width: 658px; height: 658;">

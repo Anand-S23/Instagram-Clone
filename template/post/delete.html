@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block head %}<link rel="stylesheet" href="{% static 'css/home/home.css' %}">{% endblock %}
+{% block nav %} <a class="navbar-link insta"><span>Instaclone</span></a> {% endblock %}
+
+{% block title %} Delete Post {% endblock %}
+
+{% block content %}
+    <h3>Are you sure you want to delete this post?</h3>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger btn-sm">Delete</button> 
+        <a href="{% url 'accounts:detail' request.user %}">Return home</a>
+    </form>
+{% endblock %}
