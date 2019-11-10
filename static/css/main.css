@@ -649,6 +649,14 @@ a:hover
     margin-bottom: 10px;
 }
 
+.li-im {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    margin: 0px;
+    padding: 0px;
+}
+
 /* Add */
 .add-label {
     text-align: center;

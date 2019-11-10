@@ -12,7 +12,7 @@
     {% if request.user.username != user.username %}
       <p class="e-user">
         <a href="{% url 'accounts:detail' user.username %}">
-          <img src="{{user.picture.url}}" style="height: 30px; width: 30px;" align="left">
+          <img src="{{user.picture.url}}" class="li-im" align="left">
           {{ user.username }}
         </a></p>
     {% endif %}
