@@ -9,7 +9,12 @@
 
 {% if activites %}
     {% for activity in activites %}
-        <p class="e-activity">{{ activity }}</p>
+        <a href="{% url 'accounts:detail' activity.from_user %}" class="act-a">
+            <p class="e-activity"> 
+                <img src="{{ activity.from_user.picture.url }}" class="act-im" align="left"> 
+                {{ activity }}
+            </p>
+        </a>
     {% endfor %}
 {% endif %}
 

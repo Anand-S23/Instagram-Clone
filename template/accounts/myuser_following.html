@@ -2,12 +2,19 @@
 {% load static i18n %}
 
 {% block title %}{{ user.username }} Following{% endblock %}
+{% block head %}<link rel="stylesheet" href="{% static 'css/home/home.css' %}">{% endblock %}
+{% block nav %} <a class="navbar-link insta"><span>Instaclone</span></a> {% endblock %}
 
 {% block content %}
 
     <div class="container">
         {% for follow in user.following.all %}
-            <a href="{% url 'accounts:detail' follow.username %}">{{ follow }}</a>
+        <p class="flwing-p">    
+                <a href="{% url 'accounts:detail' follow.username %}">
+                    <img src="{{ follow.picture.url }}" align="left">
+                    {{ follow }}
+                </a>
+            </p>
         {% endfor %}
     </div>
 

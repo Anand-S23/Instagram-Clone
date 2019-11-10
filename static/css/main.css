@@ -692,6 +692,49 @@ a:hover
 /* Like */
 .e-activity {
     font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.act-im {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    display: block;
+}
+
+.act-a a:hover {
+    text-decoration: none;
+    color: black;
+}
+
+/* follow */
+.flwing-p {
+    font-size: 1.75rem;
+}
+
+.flwing-p img {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    margin: 0px;
+    padding: 0px;
+}
+
+.flwer-p {
+    font-size: 1.75rem;
+}
+
+.flwer-p img {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    margin: 0px;
+    padding: 0px;
+}
+
+.flw-t {
+    font-size: 1.5rem;
+    margin: 0px;
 }
 
 /* Profile */
