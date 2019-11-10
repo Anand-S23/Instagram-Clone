@@ -17,7 +17,7 @@
             </a>
 
             {% if post.user == request.user %}
-                <a href="{% url 'post:delete_post' post.pk %}"><button>Delete</button></a>
+                <a href="{% url 'post:delete_post' post.pk %}"><button class="del btn btn-danger">Delete</button></a>
             {% endif %}
         </div>
 

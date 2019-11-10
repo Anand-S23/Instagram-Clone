@@ -3,21 +3,24 @@
 
 {% block title %}{{ user.username|title }}{% endblock %}
 
+{% block head %}<link rel="stylesheet" href="{% static 'css/home/home.css' %}">{% endblock %}
+{% block nav %} <a class="navbar-link insta"><span>Instaclone</span></a> {% endblock %}
+
 {% block content %}
 
   <div class="row profile">
     <div class="col-md-4 user-profile">
-      <h1>{{ user.username|title }}</h1>
+      <h1 class='ftuser'>{{ user.username|title }}</h1>
         <img src="{{ user.picture.url }}" style="height: 250px;">
     </div>
 
-    <div class="col-md-8">
+    <div class="change col-md-8">
       <form enctype="multipart/form-data" class="form-horizontal" method="post" action="{% url 'accounts:update' %}">
         {% csrf_token %}
         {{ form.as_p }}
         <div class="control-group">
           <div class="controls">
-            <button type="submit" class="btn btn-dark">{% trans 'Update Profile' %}</button>
+            <button type="submit" class="save-f btn btn-dark">{% trans 'Update Profile' %}</button>
           </div>
         </div>
       </form>

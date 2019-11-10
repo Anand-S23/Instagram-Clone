@@ -20,9 +20,9 @@
                     <a href="{% url 'accounts:update' %}"><button class="btn profile-edit-btn">Edit Profile</button></a>
                     {% else %}
                         {% if request.user in object.followers.all %}
-                            <a href="{% url 'accounts:follow' object.username %}"><button class="btn profile-edit-btn">Following</a>
+                            <a href="{% url 'accounts:follow' object.username %}"><button class="unfollow btn btn-secondary">Following</a>
                         {% else %}
-                            <a href="{% url 'accounts:follow' object.username %}"><button class="btn profile-follow-btn">Follow</button></button></a>
+                            <a href="{% url 'accounts:follow' object.username %}"><button class="follow btn btn-primary">Follow</a>
                         {% endif %}
                     {% endif %}
                 </div>
