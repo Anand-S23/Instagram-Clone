@@ -8,9 +8,12 @@ Completed Features:
 - Post system - Post, Comment, Like
 - Home (list of posts from users you follow)
 - Activity (Notified when someone follows you or likes your post.)
-
-In-development To Do List: 
 - UI/UX Desgin
 
+In-development To Do List: 
+- Minor UI/UX  Touch-ups (Login, Register, Like/Follow List)
+
 Future Features:
+- Ajax for the home liking
+- Forget Password
 - Flutter front end with Django Rest API (both web and app)
