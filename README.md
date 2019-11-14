@@ -13,6 +13,7 @@ Completed Features:
 In-development To Do List: 
 - Minor UI/UX  Touch-ups (Login, Register)
 - Ajax for the home liking
+- User search 
 
 Future Features:
 - Forget Password
