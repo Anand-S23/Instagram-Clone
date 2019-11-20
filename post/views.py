@@ -8,6 +8,10 @@ from django.views.generic import RedirectView
 from django.http import HttpResponseRedirect
 from user_activity.models import Act
 
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import authentication, permissions
+
 # Create your views here.
 @login_required
 def view_post(request, pk):
@@ -79,6 +83,50 @@ class OutLikeSys(RedirectView):
         return reverse('home:home')
 
 
+
+class OutLikeSys(RedirectView):
+    def get_redirect_url(self, *args, **kwargs):
+        pk = self.kwargs.get('pk')
+        post = get_object_or_404(Post, pk=pk)
+        user = self.request.user
+        if user in post.likes.all():
+            post.likes.remove(user)
+        else:
+            post.likes.add(user)
+            act = Act(to_user=post.user, from_user=user, act='liked')
+        
+        return reverse('home:home')
+
+
+class OutLikeSysAPI(APIView):
+    authentication_classes = (authentication.SessionAuthentication,)
+    permission_classes = (permissions.IsAuthenticated,)
+
+    def get(self, *args, **kwargs):
+        pk = self.kwargs.get('pk')
+        post = get_object_or_404(Post, pk=pk)
+        user = self.request.user
+        liked = False
+        updated = False 
+        if user in post.likes.all():
+            post.likes.remove(user)
+            liked = False
+        else:
+            post.likes.add(user)
+            act = Act(to_user=post.user, from_user=user, act='liked')
+            liked = True 
+        updated = True 
+
+        count = post.likes.count()
+        data = {
+            'updated':updated,
+            'liked':liked,
+            'count':count,
+        }
+
+        return Response(data)
+
+
 def delete_post(request, pk):
     #  Deleting the task
     dp = get_object_or_404(Post, pk=pk)
@@ -87,7 +135,6 @@ def delete_post(request, pk):
         dp.delete()
         return HttpResponseRedirect(f'/user/{request.user}/')
 
-    
     # Rendering everything to html (template)
     return render(request=request,
                   template_name='post/delete.html')

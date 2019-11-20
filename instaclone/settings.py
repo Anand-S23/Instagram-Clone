@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'home',
     'post',
     'user_activity',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
