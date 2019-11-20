@@ -12,9 +12,14 @@ Completed Features:
 
 In-development To Do List: 
 - Minor UI/UX  Touch-ups (Login, Register)
-- Ajax for the home liking
 - User search 
 
+Technology Stack Used: 
+- Python
+- Django 
+- HTML/CSS
+- JS/Jquery
+- Django Rest Framework
+
 Future Features:
-- Forget Password
 - Flutter front end with Django Rest API (both web and app)
