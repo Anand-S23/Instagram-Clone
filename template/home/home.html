@@ -13,6 +13,7 @@
         }
             function updateIcon(main, old, new_one){
                 main.find("i").removeClass(old).addClass(new_one)
+                main.find("i").css({'color':'red'})
             }
         $(".like-btn").click(function(e){
         e.preventDefault()
