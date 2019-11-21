@@ -12,7 +12,6 @@ Completed Features:
 
 In-development To Do List: 
 - Minor UI/UX  Touch-ups (Login, Register)
-- User search 
 
 Technology Stack Used: 
 - Python
