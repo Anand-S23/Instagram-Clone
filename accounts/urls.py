@@ -10,6 +10,7 @@ urlpatterns = [
     path('redirect/', views.UserRedirectView.as_view(), name='redirect'),
     path('update/', views.UserUpdateView.as_view(), name='update'),
     path('explore/', views.UserListView.as_view(), name='list'),
+    path('explore/search/', views.SearchResultsView.as_view(), name='search_results'),
     path('user/<str:username>/', view=views.UserDetailView.as_view(), name='detail'),
     path('user/<str:username>/follow/', views.UserFollowSystem.as_view(), name='follow'),
     path('user/<str:username>/following/', views.UserFollowing, name='following'),

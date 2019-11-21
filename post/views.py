@@ -118,10 +118,12 @@ class OutLikeSysAPI(APIView):
         updated = True 
 
         count = post.likes.count()
+        link = '/post/{pk}/'
         data = {
             'updated':updated,
             'liked':liked,
             'count':count,
+            'link':link,
         }
 
         return Response(data)

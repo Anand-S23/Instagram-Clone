@@ -10,6 +10,7 @@ from django.contrib.auth.decorators import login_required
 from .models import MyUser
 from post.models import Post
 from user_activity.models import Act
+from django.db.models import Q
 
 # Create your views here.
 
@@ -105,6 +106,17 @@ class UserListView(LoginRequiredMixin, ListView):
     slug_field = 'username'
     slug_url_kwarg = 'username'
     users = MyUser.objects.all()
+
+class SearchResultsView(ListView):
+    model = MyUser
+    template_name = 'accounts/search_results.html'
+
+    def get_queryset(self): # new
+        query = self.request.GET.get('q')
+        object_list = MyUser.objects.filter(
+            Q(username__icontains=query) 
+        )
+        return object_list
 
 
 # Follow System

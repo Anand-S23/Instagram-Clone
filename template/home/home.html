@@ -9,8 +9,11 @@
     <script>
         $(document).ready(function(){
             function updateText(the_div, newCount){
-            the_div.text(newCount)
+            the_div.parent().find(".foot-text").text(newCount)
         }
+            function updateIcon(main, old, new_one){
+                main.find("i").removeClass(old).addClass(new_one)
+            }
         $(".like-btn").click(function(e){
         e.preventDefault()
         var this_ = $(this)
@@ -25,12 +28,16 @@
                 console.log(data)
                 var newLikes;
                 if (data.liked){
-                    updateText(holder, (data.count))
-                    $(".like-btn i").removeClass("fa fa-heart-o").addClass("fa fa-heart")
-                    $(".like-btn i").css({'color':'red'})
+                    updateText(this_, (data.count))
+                    updateIcon(this_, "fa fa-heart-o", "fa fa-heart")
+                    console.log($(this).context)
+                    
+                    //console.log($(this).find("i").removeClass("fa fa-heart-o").addClass("fa fa-heart"))
+                    //$(this).css({'color':'red'})
                 } else {
-                    updateText(holder, (data.count))
-                    $(".like-btn i").removeClass("fa fa-heart").addClass("fa fa-heart-o")
+                    updateText(this_, (data.count))
+                    updateIcon(this_, "fa fa-heart", "fa fa-heart-o")
+                    console.log($(this).context)
                     // remove one like
                 }
             }, error: function(error){
@@ -69,7 +76,11 @@
                                     {% endif %}
                                 -->
                             <span class="foot-text">{{ post.likes.count }}</span>
-                            <a class="like-btn" data-href="{{ post.get_api_like_url }}" href="{% url 'post:out_like' post.pk %}"><i class="fa fa-heart-o"></i></a>
+                           {% if request.user in post.likes.all %}
+                                <a class="like-btn" data-href="{{ post.get_api_like_url }}" href="{% url 'post:out_like' post.pk %}"><i class="fa fa-heart" style="color:red;"></i></a>
+                            {% else %}
+                                <a class="like-btn" data-href="{{ post.get_api_like_url }}" href="{% url 'post:out_like' post.pk %}"><i class="fa fa-heart-o"></i></a>
+                            {% endif %}
                             <a href="{% url 'post:view_post' post.pk %}"><i class="fa fa-comment-o"></i></a>  
                         </span>           
                         <span class="post-time">

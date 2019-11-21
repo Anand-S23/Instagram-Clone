@@ -1139,3 +1139,17 @@ Remove or comment-out the code block below to see how the browser will fall-back
         }
     }
 }
+
+
+.round {
+    width: 50%;
+    margin-right: 25%;
+    margin-left: 25%;
+    font-size: 1.75rem;
+    padding: 5px;
+}
+
+#search-form {
+    width: 100%;
+    margin-top: 10px;
+}

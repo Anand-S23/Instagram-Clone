@@ -14,7 +14,7 @@
 {% block content %}
 
   <p>{{ user_list }}</p>
-  {% for user in myuser_list %}
+  {% for user in object_list %}
     {% if request.user.username != user.username %}
       <p class="e-user">
         <a href="{% url 'accounts:detail' user.username %}">

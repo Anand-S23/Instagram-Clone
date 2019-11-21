@@ -7,6 +7,44 @@
 {% block title %} New Post {% endblock %}
 
 {% block content %}
+<script>
+        $(document).ready(function(){
+            function updateText(the_div, newCount){
+            the_div.text(newCount)
+        }
+        $(".like-btn").click(function(e){
+        e.preventDefault()
+        var this_ = $(this)
+        var holder = $(".foot-text")
+        var likeUrl = this_.attr("data-href")
+        if (likeUrl){
+            $.ajax({
+            url: likeUrl,
+            method: "GET",
+            data: {},
+            success: function(data){
+                console.log(data)
+                var newLikes;
+                if (data.liked){
+                    updateText(holder, (data.count))
+                    $(".like-btn i").removeClass("fa fa-heart-o").addClass("fa fa-heart")
+                    $(".like-btn i").css({'color':'red'})
+                } else {
+                    updateText(holder, (data.count))
+                    $(".like-btn i").removeClass("fa fa-heart").addClass("fa fa-heart-o")
+                    // remove one like
+                }
+            }, error: function(error){
+                console.log(error)
+                console.log("error")
+            }
+            })
+        }
+        
+        })
+    })
+   </script>
+
     <div class="post-card">
         <div class="post-head">
             <a href="{% url 'accounts:detail' post.user %}">
@@ -26,12 +64,14 @@
         <div class="apost-foot">
             <p>
                 <span class="foot">
-                    {{ post.likes.count }}
+                    <span class="foot-text">{{ post.likes.count }}</span>
                     {% if request.user in post.likes.all %}
-                        <a href="{% url 'post:like' post.pk %}"><i class="fa fa-heart" style="color:#ff0000" ></i></a>
+                        <a class="like-btn" data-href="{{ post.get_api_like_url }}" href="{% url 'post:out_like' post.pk %}"><i class="fa fa-heart" style="color:red;"></i></a>
                     {% else %}
-                        <a href="{% url 'post:like' post.pk %}"><i class="fa fa-heart-o"></i></a>
+                        <a class="like-btn" data-href="{{ post.get_api_like_url }}" href="{% url 'post:out_like' post.pk %}"><i class="fa fa-heart-o"></i></a>
                     {% endif %}
+                    
+                    <a href="{% url 'post:view_post' post.pk %}"><i class="fa fa-comment-o"></i></a>  
                 </span>
             </p>
         </div>
