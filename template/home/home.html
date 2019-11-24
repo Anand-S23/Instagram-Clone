@@ -85,7 +85,7 @@
                             <a href="{% url 'post:view_post' post.pk %}"><i class="fa fa-comment-o"></i></a>  
                         </span>           
                         <span class="post-time">
-                            {{ post.post_date|yearssince }}
+                            {{ post.post_date|timesince }}
                         </span>  
                     </p>
                 </div>

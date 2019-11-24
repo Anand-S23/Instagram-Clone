@@ -1,14 +1,16 @@
-{% extends 'base.html' %}
+{% extends 'other_base.html' %}
 
 {% block content %}
 
-	<h1>Register</h1>
-	<form method="post" enctype="multipart/form-data">
-		{% csrf_token %}
-		{{ form.as_p }}
-		<button type="submit" name="Submit">Submit</button>
-	</form>
-
-	<p>Have an account, <a href="{% url 'accounts:login' %}">Login</a></p>
-
+	<div class='oorcontainer'>
+		<div class='iocontainer'>
+			<h1>Register</h1>
+			<form method="post" enctype="multipart/form-data">
+				{% csrf_token %}
+				{{ form.as_p }}
+				<button type="submit" name="Submit" class="btn btn-primary s-btn">Submit</button>
+			</form>
+			<p id="no_account">Have an account, <a href="{% url 'accounts:login' %}">Login</a></p>
+		</div>
+	</div>
 {% endblock %}

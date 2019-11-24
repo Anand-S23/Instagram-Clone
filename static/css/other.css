@@ -1,0 +1,48 @@
+.oorcontainer {
+    padding-top: 35px;
+}
+
+.oolcontainer {
+    padding-top: 120px;
+}
+
+.iocontainer {
+    background: white;
+    border: thin solid #F5F5F5;
+    margin: 0 auto;
+    padding: 10px 20px 25px;
+    position: relative;
+    text-align: center;
+    width: 348px;
+    top: 30%;
+    font-size: 1rem;
+}
+
+#no_account {
+    margin-top: 20px;
+}
+
+#no_account a{
+    color: #62B1F6;
+    position: relative;
+    letter-spacing: -.5px;
+}
+
+input {
+    width: 100%;
+    border: 1px solid gray;
+    margin-right: 5px;
+    margin-left: 5px;
+    padding: 5px;
+}
+
+.insta {
+    font-family: 'Lobster Two', cursive;
+    margin-bottom: 20px;
+}
+
+.s-btn {
+    font-size: 1.75rem;
+    width: 100%;
+    margin-top: 10px;
+}

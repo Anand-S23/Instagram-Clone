@@ -1,14 +1,16 @@
-{% extends 'base.html' %}
+{% extends 'other_base.html' %}
 
 {% block content %}
+	<div class='oolcontainer'>
+		<div class='iocontainer'>
+			<h1 class="insta">Instaclone</h1>
+			<form method="POST">
+				{% csrf_token %}
+				{{ form.as_p }}
+				<button type="submit" name="Submit" class="btn btn-primary s-btn">Submit</button>
+			</form>
 
-	<h1>Login</h1>
-	<form method="POST">
-		{% csrf_token %}
-		{{ form.as_p }}
-		<button type="submit" name="Submit">Submit</button>
-	</form>
-
-	<p>Don't have an account? <a href="{% url 'accounts:register' %}">Sign Up</a></p>
-
+			<p id="no_account">Don't have an account? <a href="{% url 'accounts:register' %}">Sign Up</a></p>
+		</div>
+	</div>
 {% endblock %}
