@@ -1,24 +1,22 @@
 # Instaclone
 Clone of the the Instagram social media, where users can post like, and comment on photos and follow other users. 
 
-Completed Features:
-- User authentication system
-- User follow system
-- User can update thier information
-- Post system - Post, Comment, Like
-- Home (list of posts from users you follow)
-- Activity (Notified when someone follows you or likes your post.)
-- UI/UX Desgin
-
-In-development To Do List: 
-- Minor UI/UX  Touch-ups (Login, Register)
-
 Technology Stack Used: 
 - Python
-- Django 
+- Django/Django Rest Framework 
 - HTML/CSS
-- JS/Jquery
-- Django Rest Framework
+- JS (JQuery/Ajax)
 
-Future Features:
-- Flutter front end with Django Rest API (both web and app)
+Completed Features:
+- Authentication System - users can login, logout and make account
+- Follow System - users cans follow one another
+- Profile customization - users can update thier information and add bio
+- Post system - users can post, comment on posts, like post
+- Home - users can see a list of posts from users they follow
+- Activity - users notified when someone follows them
+- Explore - users are able to find other users they do not follow 
+
+Possible Future Features:
+- Flutter front end with Django Rest API
+- Private accounts 
+- Direct messages
